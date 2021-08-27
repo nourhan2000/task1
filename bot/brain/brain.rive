@@ -1,0 +1,35 @@
+! version = 2.0
+
+
+> begin
+
++ request
+* <get met> == undefined => <set met=true>{topic=beginning}{ok}
+- {ok}
+< begin
+
+> topic beginning
++*
+-hi,what's your name?{topic=uname}
+< topic
+
+> topic uname
++*
+-hello,<star> how old are you?<set name=<star>> {topic=uage}
+< topic
+
+> topic uage 
++#
+- age saved now you can ask me questions <set age=<star>> {topic=questions}
+< topic
+
+> topic questions 
++ what is my name 
+* <get name> != undefined => your name is <get name> 
+- i don't know your name!!
+
++how old am i 
+* <get age> != undefined => You are <get age> years old !
+- you never told me 
+
+<topic
