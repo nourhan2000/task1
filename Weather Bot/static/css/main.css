@@ -1,0 +1,20 @@
+body {
+    margin: 10;
+    font-family: sans-serif;
+    align-items: flex-end;
+}
+
+div.message {
+    border-radius: 15px;
+    background-color: blanchedalmond;
+    margin-top: 10;
+    display: inline-block;
+}
+
+p {
+    margin: 10px;
+}
+
+h4 {
+    margin: 11px;
+}

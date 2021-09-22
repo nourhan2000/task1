@@ -1,0 +1,38 @@
+! version = 2.0
+
+
+> begin
+
++ request
+* <get met> == undefined => <set met=true>{topic=random}{ok}
+- {ok}
+< begin
+
+> topic random
++*
+-hi,what's your name?{topic=uname}
+< topic
+
+> topic uname
++*
+-hello,<star> would you like to know the weather today?<set name=<star>> {topic=usage}
+< topic
+
+> topic usage 
++yes
+- Great, which city do you want to know its weather? {topic=weathercall}
+
++no
+-OK,bye! to restart say hi {topic=random}
+
+< topic
+
+> topic weathercall 
++*
+- Temp=<call>temp <star> </call> f thank you. to ask more questions say hi.{topic=random} 
+< topic
+
+> object temp python
+   from utils import temp
+   return temp(args[0])
+< object
